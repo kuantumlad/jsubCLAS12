@@ -1,0 +1,17 @@
+#!/bin/tcsh
+
+set runNumber=$1
+set torusPolarity = $2
+set solenoidPolarity = $3
+
+echo ">> SETTING ENVIRONMENT"
+#setenv COATJAVA $CLARA_HOME/plugins/clas12/
+
+echo ">> VARIABLES FOR DECODER $runNumber $torusPolarity and $solenoidPolarity"
+echo ">> FILE input $4 "
+
+echo "EXECUTING COATJAVA EVIO2HIPO"
+
+echo "COPYING COAT V 5b.7.8"
+cp -r /w/hallb-scifs17exp/clas12/bclary/extras/coatjava-5b.7.8 .
+./coatjava-5b.7.8/bin/evio2hipo -r $runNumber -t $torusPolarity -s $solenoidPolarity $4 -o decoded.hipo

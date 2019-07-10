@@ -1,0 +1,20 @@
+#!/bin/tcsh 
+
+source /group/clas12/gemc/environment.csh 4.3.0
+set nev = 1000 #`awk 'BEGIN{nev=0;}{if(NF==10) nev++;}END{print nev}' $1`
+
+echo " > EXECUTING GEMC "
+echo " > launching $nev events "
+echo " > starting gemc job"
+
+#set TORUSFIELD=$2
+#set SOLENOIDFIELD=$3
+
+#echo " T FIELD " ${TORUSFIELD}
+#echo " S FIELD " ${SOLENOIDFIELD}
+
+#sed 's/'"TORUSFIELDTOREPLACE"'/'"${TORUSFIELD}"'/' clas12test.gcard  > clas12-mod.gcard
+#sed 's/'"SOLENOIDFIELDTOREPLACE"'/'"${SOLENOIDFIELD}"'/' clas12-mod.gcard  > clas12-final.gcard
+
+gemc $2 -RUNNO=11 -N=${nev} -USE_GUI=0 -INPUT_GEN_FILE="LUND, $1" -OUTPUT="evio, sim.evio"
+echo " > finished gemc "

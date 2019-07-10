@@ -1,0 +1,17 @@
+#!/usr/bin/tcsh
+
+echo ">> Running Reconstruction"
+echo "FILE INPUT $1"
+
+#setenv COATJAVA /group/clas12/clara/smancill/clara/plugins/clas12/
+#setenv COATJAVA /lustre/expphy/work/halla/sbs/bclary/extras/coatjava
+#tar -xf coatjava-4a.8.1.tar
+
+#cp -r coatjava-5b.7.8 .
+
+echo "EXECUTING COATJAVA RECON"
+
+# whatever you do, do not uncomment out the geom variation for simulation
+#setenv GEOMDBVAR thayward_test_0087
+
+./coatjava-6b.2.0/bin/recon-util -i $1 -o recon.hipo -c 2

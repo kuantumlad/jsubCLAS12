@@ -1,0 +1,26 @@
+#!/bin/tcsh
+
+
+set runNumber=$1
+set torusPolarity=$2
+set solenoidPolarity=$3
+set inputLund=$4
+set inputGcard=$5
+
+echo " STARTING TO RUN GEMC "
+run_gemc ${inputLund} ${inputGcard}
+echo " COMPLETED GEMC "
+
+echo " BEGIN DECODING "
+run_decode ${runNumber} ${torusPolarity} ${solenoidPolarity} sim.evio
+echo " COMPLETED DECODING "
+
+echo " STARTING RECON "
+run_recon decoded.hipo
+echo " COMPLETED RECONSTRUCTION "
+
+#mv recon.hipo /w/hallb-scifs17exp/clas12/bclary/CLAS12/electron_studies/elastic/sim/${inputLund}.hipo
+
+echo " "
+
+echo " exiting run-master script "
