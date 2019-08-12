@@ -14,4 +14,4 @@ echo "EXECUTING COATJAVA RECON"
 # whatever you do, do not uncomment out the geom variation for simulation
 #setenv GEOMDBVAR thayward_test_0087
 
-./coatjava-6b.2.0/bin/recon-util -i $1 -o recon.hipo -c 2
+./coatjava-6.3.1/bin/recon-util -i $1 -o recon.hipo -c 2

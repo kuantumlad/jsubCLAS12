@@ -89,7 +89,7 @@ for j in range(0,n_jobs):
 
     
     jsub_script = open("/work/clas12/bclary/CLAS12/simulation/farm/batch_jobs/"+jobName+"/jsub_script_"+in_tag+"_"+str(j)+".jsub","w")
-    jsub_script.write("JOBNAME:  bc" + jobName + str(j) + " \n")
+    jsub_script.write("JOBNAME:  bc" + in_tag + str(j) + " \n")
     jsub_script.write("OS:       centos7"+ " \n")
     jsub_script.write("TRACK:    simulation"+ " \n")
     jsub_script.write("MEMORY:   5 GB"+ " \n")
@@ -110,7 +110,9 @@ for j in range(0,n_jobs):
     if resubmit == False:
         for f in range(min_file,max_file):
             print " min %d max %d " % (min_file, max_file)
-            jsub_script.write(inDir+inStub+str(f)+ extStub + " \n")
+            f_num = f # "%04d" % (f,);
+
+            jsub_script.write(inDir+str(l_infile[f])[:-1] +"\n")#inStub + str(f)  + extStub + " \n")
 
     elif resubmit == True:
         for f in range(min_file,max_file): 

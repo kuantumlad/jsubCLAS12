@@ -12,6 +12,6 @@ echo ">> FILE input $4 "
 
 echo "EXECUTING COATJAVA EVIO2HIPO"
 
-echo "COPYING COAT V 6b.2.0"
-cp -r /w/hallb-scifs17exp/clas12/bclary/extras/coatjava-6b.2.0 .
-./coatjava-6b.2.0/bin/evio2hipo -r $runNumber -t $torusPolarity -s $solenoidPolarity $4 -o decoded.hipo
+echo "COPYING COAT V 6.3.1"
+cp -r /w/hallb-scifs17exp/clas12/bclary/extras/coatjava-6.3.1 .
+./coatjava-6.3.1/bin/evio2hipo -r $runNumber -t $torusPolarity -s $solenoidPolarity $4 -o decoded.hipo
