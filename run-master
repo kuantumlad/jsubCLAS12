@@ -1,6 +1,5 @@
 #!/bin/tcsh
 
-
 set runNumber=$1
 set torusPolarity=$2
 set solenoidPolarity=$3
@@ -8,19 +7,27 @@ set inputLund=$4
 set inputGcard=$5
 
 echo " STARTING TO RUN GEMC "
+ls -altrh 
 run_gemc ${inputLund} ${inputGcard}
 echo " COMPLETED GEMC "
 
 echo " BEGIN DECODING "
+ls -altrh 
 run_decode ${runNumber} ${torusPolarity} ${solenoidPolarity} sim.evio
 echo " COMPLETED DECODING "
 
+#cp decoded.hipo /volatile/clas12/bclary/simulation_out/inclusive/7GeV/rad/decoded_${inputLund}.hipo
+
 echo " STARTING RECON "
+ls -altrh 
 run_recon decoded.hipo
 echo " COMPLETED RECONSTRUCTION "
 
 #mv recon.hipo /w/hallb-scifs17exp/clas12/bclary/CLAS12/electron_studies/elastic/sim/${inputLund}.hipo
 
-echo " "
+echo " CONVERTING HIPO TO ROOT FILE "
+ls -altrh
+run_hipo2root recon.hipo
 
 echo " exiting run-master script "
+

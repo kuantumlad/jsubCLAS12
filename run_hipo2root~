@@ -1,0 +1,8 @@
+#!/bin/tcsh
+
+source /site/12gev_phys/softenv.csh 2.3
+
+hipoToRootDir=/work/clas12/tylern/software/hipo_tools/bin/
+
+echo " converting " ${1}
+${hipoToRootDir}/hipo2root -t -mc ${1} ${1}.root

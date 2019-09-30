@@ -1,4 +1,4 @@
-#!/usr/bin/tcsh
+#!/bin/tcsh
 
 echo ">> Running Reconstruction"
 echo "FILE INPUT $1"
@@ -14,4 +14,19 @@ echo "EXECUTING COATJAVA RECON"
 # whatever you do, do not uncomment out the geom variation for simulation
 #setenv GEOMDBVAR thayward_test_0087
 
-./coatjava-6.3.1/bin/recon-util -i $1 -o recon.hipo -c 2
+
+#try this next 
+
+
+#cp -r /w/hallb-scifs17exp/clas12/bclary/extras/coatjava-6.3.1 .
+#./coatjava-6.3.1/bin/recon-util -i $1 -o recon.hipo -c 2
+
+source /site/12gev_phys/softenv.csh 2.3
+source /group/clas12/packages/setup.csh
+module avail
+module load coatjava/6.3.1
+#recon-util -i $1 -o recon.hipo -c 2 
+
+cp -r /home/kenjo/recon-util-yaml/ .
+cp /group/clas12/gemc/gcards/rga-fall2018.yaml .
+./recon-util-yaml/recon-util-yaml -i $1 -o recon.hipo -y rga-fall2018.yaml
